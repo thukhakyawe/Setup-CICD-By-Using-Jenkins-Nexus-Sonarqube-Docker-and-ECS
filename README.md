@@ -145,3 +145,28 @@ sudo systemctl restart jenkins.service
 ![alt text](image-16.png)
 
 ![alt text](image-17.png)
+
+
+## 4 First Pipeline
+
+#### 4.1 Create Pipeline by using Jenkinsfile
+
+- Click New Item
+
+![alt text](image-18.png)
+
+- Choost Pipeline and Click OK
+
+![alt text](image-19.png)
+
+- Insert Data from Jenkinsfile and Click Save
+
+![alt text](image-20.png)
+
+- Click Build Now
+
+![alt text](image-21.png)
+
+- Click Status
+
+![alt text](image-22.png)
