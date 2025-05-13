@@ -59,4 +59,63 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 
 
 
-## 2. Create EC2 Server for Nexus
+## 2. Create EC2 Server for Nexus and Sonarqube
+
+#### 2.1 User Data Script for Nexus
+
+- Use nexus-setup.sh
+
+#### 2.2 Security Group for Nexus
+
+- Allow ssh from your ip
+- Allow 8081 from your ip
+- Allow 8081 from jenkins-sg
+
+#### 2.3 User Data Script for Nexus
+
+- Use sonar-setup.sh
+
+#### 2.4 Security Group for Nexus
+
+- Allow ssh from your ip
+- Allow 80 from your ip
+- Allow 80 from jenkins-sg
+
+#### 2.5 Check nexus status
+
+- Log in to nexus EC2 and run
+
+```
+systemctl status nexus
+ls /opt/nexus/
+java -v
+```
+
+- Log in to publicip:8081
+
+![alt text](image-6.png)
+
+- Click Sign In
+
+![alt text](image-7.png)
+
+```
+cat /opt/nexus/sonatype-work/nexus3/admin.password
+```
+
+- Log in and Set Up
+
+![alt text](image-8.png)
+
+![alt text](image-9.png)
+
+#### 2.6 Check sonarqube status
+
+- Log in to publicip
+
+![alt text](image-10.png)
+
+
+![alt text](image-11.png)
+
+- Allow 8080 from Sonarqube SG at Jenkin SG
