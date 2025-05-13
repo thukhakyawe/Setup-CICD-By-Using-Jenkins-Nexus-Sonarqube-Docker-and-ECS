@@ -190,3 +190,20 @@ sudo systemctl restart jenkins.service
 ![alt text](image-26.png)
 
 ![alt text](image-27.png)
+
+## 6. Code Analysis Demonstration
+
+#### 6.1 Use New Jenkinsfile Information and Run Pipeline
+
+![alt text](image-28.png)
+
+![alt text](image-29.png)
+
+
+#### 6.2 Use New Jenkinsfile Information and Run Pipeline
+
+![alt text](image-30.png)
+
+![alt text](image-31.png)
+
+![alt text](image-32.png)
