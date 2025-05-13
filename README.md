@@ -170,3 +170,23 @@ sudo systemctl restart jenkins.service
 - Click Status
 
 ![alt text](image-22.png)
+
+
+## 5 Add SonarQube Scanner and SonarQube Servers Detail
+
+#### 5.1 Add SonarQube Scanner
+
+![alt text](image-23.png)
+
+
+#### 5.2 Add SonarQube Servers
+
+- Create Token from SonarQube
+
+![alt text](image-25.png)
+
+![alt text](image-24.png)
+
+![alt text](image-26.png)
+
+![alt text](image-27.png)
