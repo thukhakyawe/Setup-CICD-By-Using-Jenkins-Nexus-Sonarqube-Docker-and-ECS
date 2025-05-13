@@ -70,6 +70,7 @@ cat /var/lib/jenkins/secrets/initialAdminPassword
 - Allow ssh from your ip
 - Allow 8081 from your ip
 - Allow 8081 from jenkins-sg
+- Allow 80 from anywhere
 
 #### 2.3 User Data Script for Nexus
 
@@ -237,7 +238,7 @@ sudo systemctl restart jenkins.service
 1. Go to vprofile project
 2. Project Settings
 3. Webhooks
-4. Name must be your private ip:8080/sonarqube-webhook
+4. Name must be your jenkien server private ip:8080/sonarqube-webhook
 
 ![alt text](image-37.png)
 
@@ -247,3 +248,36 @@ sudo systemctl restart jenkins.service
 #### 7.4 Use New Jenkinsfile Information and Run Pipeline
 
 
+![alt text](image-39.png)
+
+
+## 8 Nexus Repository 
+
+#### 8.1 Create Nexus Repository for Maven Hosted
+
+![alt text](image-40.png)
+
+![alt text](image-41.png)
+
+![alt text](image-42.png)
+
+![alt text](image-43.png)
+
+
+#### 8.2 Create Credential
+
+![alt text](image-44.png)
+
+![alt text](image-45.png)
+
+![alt text](image-46.png)
+
+![alt text](image-47.png)
+
+
+![alt text](image-48.png)
+
+
+#### 8.3 Use New Jenkinsfile Information and Run Pipeline
+
+![alt text](image-49.png)
