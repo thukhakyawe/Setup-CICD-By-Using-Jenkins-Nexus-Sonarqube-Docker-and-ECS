@@ -119,3 +119,29 @@ cat /opt/nexus/sonatype-work/nexus3/admin.password
 ![alt text](image-11.png)
 
 - Allow 8080 from Sonarqube SG at Jenkin SG
+
+#### 2.7 Incase of if you can't log in Jenkin Url
+
+- You can change it here
+
+```
+sudo vim /var/lib/jenkins/jenkins.model.JenkinsLocationConfiguration.xml
+sudo systemctl restart jenkins.service
+```
+
+![alt text](image-12.png)
+
+
+## 3 Install Plugin in Jenkins Server
+
+#### 3.1 Install Nexus Artifact Uploader, SonarQube Scanner, Build Timestamp, Pipeline Maven Integration, Pipeline Utility Steps Version
+
+![alt text](image-13.png)
+
+![alt text](image-14.png)
+
+![alt text](image-15.png)
+
+![alt text](image-16.png)
+
+![alt text](image-17.png)
