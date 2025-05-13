@@ -207,3 +207,43 @@ sudo systemctl restart jenkins.service
 ![alt text](image-31.png)
 
 ![alt text](image-32.png)
+
+
+## 7. How To Create Quality Gates at sonarQube
+
+#### 7.1 Add Quality Gates
+
+1. Click Quality Gates
+2. Click Create
+3. Click Add Condition
+
+![alt text](image-33.png)
+
+![alt text](image-34.png)
+
+#### 7.2 Update Default Quality Gates with New Quality Gates
+
+1. Go to vprofile project
+2. Project Settings
+3. Quality Gates
+4. Choose vprofile-QG
+
+![alt text](image-35.png)
+
+![alt text](image-36.png)
+
+#### 7.3 Create Webhook
+
+1. Go to vprofile project
+2. Project Settings
+3. Webhooks
+4. Name must be your private ip:8080/sonarqube-webhook
+
+![alt text](image-37.png)
+
+![alt text](image-38.png)
+
+
+#### 7.4 Use New Jenkinsfile Information and Run Pipeline
+
+
