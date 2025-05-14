@@ -281,3 +281,64 @@ sudo systemctl restart jenkins.service
 #### 8.3 Use New Jenkinsfile Information and Run Pipeline
 
 ![alt text](image-49.png)
+
+
+## 9 Add Notification Slack to Jenkins
+
+## 9.1 Install Plugin
+
+![alt text](image-50.png)
+
+## 9.2 Create Workplace from Slack
+
+- Create workplace from Slack 
+
+![alt text](image-51.png)
+
+- Create New Channel from Workplace
+
+![alt text](image-55.png)
+
+## 9.3 Add Jenkins to Slack
+
+- Search Add app slack from browser and click this link, you will see like this
+
+![alt text](image-52.png)
+
+![alt text](image-53.png)
+
+![alt text](image-54.png)
+
+![alt text](image-56.png)
+
+- Copy Token to somewhere
+
+![alt text](image-57.png)
+
+- Click Down Arrow and Click Workspace
+
+![alt text](image-59.png)
+
+- Copy url to somewhere
+
+![alt text](image-58.png)
+
+-  Go to Jenkin Dashboard > Manage Jenkins > System
+- Add Workspace Name
+- Add Credentials
+- Add Channel Name
+- Click Test Connection
+
+![alt text](image-60.png)
+
+![alt text](image-61.png)
+
+- Check in Workspace
+
+![alt text](image-62.png)
+
+#### 9.4 Use New Jenkinsfile Information and Run Pipeline
+
+![alt text](image-63.png)
+
+![alt text](image-64.png)

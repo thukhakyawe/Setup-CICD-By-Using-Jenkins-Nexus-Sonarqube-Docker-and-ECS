@@ -1,3 +1,8 @@
+def COLOR_MAP = [
+    'SUCCESS': 'good', 
+    'FAILURE': 'danger',
+]
+
 pipeline {
 	agent any
 	tools {
@@ -16,7 +21,7 @@ pipeline {
 	    stage('Build'){
 	        steps{
 	           sh 'mvn install -DskipTests'
-	        }+
+	        }
 
 	        post {
 	           success {
@@ -69,7 +74,7 @@ pipeline {
                 nexusArtifactUploader(
                   nexusVersion: 'nexus3',
                   protocol: 'http',
-                +9  nexusUrl: '10.0.24.165:8081',
+                  nexusUrl: '10.0.24.165:8081',
                   groupId: 'QA',
                   version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
                   repository: 'vprofile-repo',
@@ -85,5 +90,14 @@ pipeline {
         }
 
 	}
+
+    post {
+        always {
+            echo 'Slack Notifications.'
+            slackSend channel: '#devops-cicd',
+                color: COLOR_MAP[currentBuild.currentResult],
+                message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
+        }
+    }
 
 }
