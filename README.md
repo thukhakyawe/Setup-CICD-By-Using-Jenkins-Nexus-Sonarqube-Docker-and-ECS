@@ -497,3 +497,46 @@ Pipeline: AWS Steps
 
 ![alt text](image-87.png)
 
+## 12 To Add Build Trigger
+
+#### 12.1 Change Git Host Key Verification Configuration
+
+Go to
+
+    Dashboard
+    Manage Jenkins
+    Configure Global Security
+    Git Host Key Verification Configuration
+    Host Key Verification Strategy
+    Change to "Accept first connection"
+    Save
+
+
+#### 12.2 Add SSH Repo and SSH Key
+
+- Remember Private Key to Jenkins and Public Key to Github
+
+#### 12.3 Add Webhooks at Github
+
+- Click Settings of the Repository
+- Click Webhooks
+- Type 'JenkinsServer's URL:8080/github-webhook/ 
+- example http://18.221.221.216:8080/github-webhook [Note in our guideline, we use public url of EC2]
+
+- Choose application/json at Content type
+
+- Click "Add Webhook"
+
+
+#### 12.4 Add Build Trigger at Jenkins
+
+- Click "Configure" of pipeline
+- Select "Github hook trigger for GITScm polling" at Build Triggers
+- Click "Save"
+
+
+#### 12.5 Popular Build Triggers Methods
+
+- Poll SCM 
+- Build periodically
+
