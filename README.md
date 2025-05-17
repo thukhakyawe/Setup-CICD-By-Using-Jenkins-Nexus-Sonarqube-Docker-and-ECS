@@ -434,3 +434,66 @@ Go to
 ![alt text](image-73.png)
 
 ![alt text](image-72.png)
+
+
+## 11 Install Plugin,create ECS Cluster and ECS Services
+
+
+#### 11.1 Create ECS Cluster and ECS Services
+
+
+![alt text](image-74.png)
+
+![alt text](image-75.png)
+
+![alt text](image-76.png)
+
+![alt text](image-77.png)
+
+- Add this role to ecsTaskExecutionRole
+
+![alt text](image-78.png)
+
+- Create Service
+
+![alt text](image-79.png)
+
+![alt text](image-80.png)
+
+![alt text](image-81.png)
+
+![alt text](image-82.png)
+
+- Use public subnets from networking
+
+![alt text](image-83.png)
+
+![alt text](image-84.png)
+
+![alt text](image-85.png)
+
+- Wait for until finished set up.
+
+- Call DNS 
+
+Amazon Elastic Container Service
+Clusters
+vprofile
+Services
+vprofileappsvc
+Configuration
+
+![alt text](image-88.png)
+
+
+
+#### 11.2 Install Plugins
+
+Pipeline: AWS Steps
+
+![alt text](image-86.png)
+
+#### 11.3 Use New Jenkinsfile Information and Run Pipeline
+
+![alt text](image-87.png)
+
