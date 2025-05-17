@@ -540,3 +540,7 @@ Go to
 - Poll SCM 
 - Build periodically
 
+
+------
+**_That's it!.You have finished How To Configure AWS Cloud for Project Set Up Lift and Shift.Special Thanks to Sir Imran Teli_**
+-----
