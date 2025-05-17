@@ -342,3 +342,95 @@ sudo systemctl restart jenkins.service
 ![alt text](image-63.png)
 
 ![alt text](image-64.png)
+
+
+## 10 Add Docker and ECR
+
+#### 10.1 Install aws-cli to Jenkins Server
+
+```
+sudo apt update
+sudo apt install unzip curl -y
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws --version
+```
+
+![alt text](image-65.png)
+
+#### 10.2 Install docker engine to Jenkins Server
+
+```
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+# To install latest version
+
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+```
+
+![alt text](image-66.png)
+
+
+
+```
+su - i jenkins
+exit
+usermod -a -G docker jenkins
+id jenkins
+reboot
+```
+
+![alt text](image-67.png)
+
+
+#### 10.3 Create IAM And Create ECR 
+
+- Create IAM User with these permission
+
+![alt text](image-69.png)
+
+- Create ECR
+
+![alt text](image-68.png)
+
+
+#### 10.4 Install Plugin
+
+Amazon Web Services SDK :: All
+Amazon ECR
+Docker Pipeline
+CloudBees Docker Build and Publish 
+
+![alt text](image-70.png)
+
+#### 10.5 Add Credentials to Jenkins
+
+Go to
+
+    Dashboard
+    Manage Jenkins
+    Credentials
+    System
+    Global credentials (unrestricted)
+
+
+![alt text](image-71.png)
+
+#### 10.6 Use New Jenkinsfile Information and Run Pipeline
+
+![alt text](image-73.png)
+
+![alt text](image-72.png)

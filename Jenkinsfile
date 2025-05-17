@@ -1,8 +1,3 @@
-def COLOR_MAP = [
-    'SUCCESS': 'good', 
-    'FAILURE': 'danger',
-]
-
 pipeline {
 	agent any
 	tools {
@@ -10,10 +5,17 @@ pipeline {
 	    jdk "JDK17"
 	}
 
+    environment {
+        registryCredential = 'ecr:ap-southeast-1:awscreds'
+        imageName = "801100257021.dkr.ecr.ap-southeast-1.amazonaws.com/vprofileappimg"
+        vprofileRegistry = "https://801100257021.dkr.ecr.ap-southeast-1.amazonaws.com"
+    }
+
+
 	stages {
 	    stage('Fetch code') {
             steps {
-               git branch: 'atom', url: 'https://github.com/hkhcoder/vprofile-project.git'
+               git branch: 'docker', url: 'https://github.com/hkhcoder/vprofile-project.git'
             }
 	    }
 
@@ -69,35 +71,32 @@ pipeline {
             }
         }
 
-	    stage("UploadArtifact"){
+	    stage('Build App Image') {
+            steps {
+                script {
+                    dockerImage = docker.build( imageName + ":$BUILD_NUMBER", "./Docker-files/app/multistage/")
+                }
+            }
+    
+        }
+
+        stage('Upload App Image') {
             steps{
-                nexusArtifactUploader(
-                  nexusVersion: 'nexus3',
-                  protocol: 'http',
-                  nexusUrl: '10.0.24.165:8081',
-                  groupId: 'QA',
-                  version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
-                  repository: 'vprofile-repo',
-                  credentialsId: 'nexuslogin',
-                  artifacts: [
-                    [artifactId: 'vproapp',
-                     classifier: '',
-                     file: 'target/vprofile-v2.war',
-                     type: 'war']
-                  ]
-                )
+                script {
+                    docker.withRegistry( vprofileRegistry, registryCredential ) {
+                    dockerImage.push("$BUILD_NUMBER")
+                    dockerImage.push('latest')
+                    }
+                }
+            }
+        }
+        
+        stage('Remove Container Images'){
+            steps{
+                sh 'docker rmi -f $(docker images -a -q)'
             }
         }
 
 	}
-
-    post {
-        always {
-            echo 'Slack Notifications.'
-            slackSend channel: '#devops-cicd',
-                color: COLOR_MAP[currentBuild.currentResult],
-                message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
-        }
-    }
 
 }
